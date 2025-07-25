@@ -1,0 +1,4 @@
+﻿|Card No.|Card Name|Question|Answer|
+|ST08-001|Monkey.D.Luffy|When 2 Characters are K.O.'d at the same time during my turn, can I use this [Your Turn] effect to give 2 DON!! cards?|Yes, you can. You can give DON!! cards up to the number of Characters K.O.'d.|
+|ST08-005|Shanks|After I activate this [On Play] effect and trash 1 card from my hand, can I choose whether or not to K.O. my Characters with a cost of 1 or less?|No, you cannot. This effect will K.O. all of your and your opponent's Characters with a cost of 1 or less.|
+|ST08-013|Mr.2.Bon.Kurei(Bentham)|If this Character is attacked by my opponent's Character, loses the battle and is K.O.'d, this Character will be in my trash at the end of that battle. Can I still activate the [DON!! x1] effect?|No, you cannot.|

@@ -1,0 +1,3 @@
+﻿|Card No.|Card Name|Question|Answer|
+|ST11-001|Uta|What happens regarding the "place the rest at the bottom of your deck" effect if I use this [When Attacking] effect to add 1 {FILM} type card to my hand?|In this case, nothing will happen after you add the 1 {FILM} type card to your hand.|
+|ST11-004|New Genesis|If I don't use this [Main] effect to add 1 {FILM} type card other than [New Genesis] to my hand, can I still set 1 of my DON!! cards as active?|Yes, you can.|

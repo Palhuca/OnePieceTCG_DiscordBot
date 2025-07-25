@@ -1,0 +1,9 @@
+﻿|Card No.|Card Name|Question|Answer|
+|ST06-002|Koby|Can I play this Character if I have no cards in my hand?|Yes, you can. However, you cannot activate its [On Play] effect.|
+|ST06-004|Smoker|This Character gained [Double Attack] according to its [DON!! x1] effect and is attacking. During this battle, the Character with a cost of 0 was removed from the field by an Event's [Counter] effect. How much damage will this Character deal?|If there is no Character with a cost of 0 on the field before the Damage Step, this Character loses [Double Attack] and deals 1 damage to the Leader.|
+|ST06-004|Smoker|Will this Character be K.O.'d by the [On Play] effect of [OP01-094 Kaido]?|No, it will not.|
+|ST06-012|Monkey.D.Garp|Can I use this [Activate: Main] effect to rest this Character without trashing a card from my hand, or trash a card from my hand without resting this Character?|No, you cannot.<br> All instructions specified before a colon are activation costs. Activation costs cannot be paid only in part.<br>If a part or all of the activation cost cannot be paid, then the effect cannot be activated.|
+|ST06-015|Great Eruption|Can I activate this [Trigger] effect if my opponent has no cards in their hand?|Yes, you can. However, nothing will happen according to the effect.|
+|ST06-015|Great Eruption|Can I select the target to give −2 cost after drawing a card according to this [Main] effect?|Yes. Effects are processed in order, starting from the first effect written on the card.|
+|ST06-016|White Out|During the turn this [Trigger] effect is activated, does the effect preventing K.O. also apply to Characters I play afterwards?|No, it does not. The effect preventing K.O. only applies to Characters that have been played when this [Trigger] effect is activated.|
+|ST06-017|Navy HQ|Can I use these [On Play] and [Activate: Main] effects to reduce the costs of different Characters?|Yes, you can.|
