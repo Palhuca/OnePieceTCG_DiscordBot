@@ -4,6 +4,8 @@ from langchain_chroma import Chroma
 from langchain.agents import tool
 from langchain_openai import OpenAIEmbeddings
 from pydantic import BaseModel, Field
+from zipp.glob import separate
+
 
 class GetFromChromaQAArgs(BaseModel):
     query: str = Field(description='Query that will be search in QA')
@@ -41,15 +43,19 @@ def get_from_chroma_qa(query:str) -> str:
 
 @tool(args_schema= GetFromChromaRuleArgs)
 def get_from_chroma_rule(query:str) -> str:
-    """Receive a question and return the most relevant Rules of the One Piece Card Game based on the inputted query that should be used as context. The result also contains the source information. The data is formatted as following
-    Format: {RULE_NUMBER}. {RULE_TEXT}
-    Rules are segmented in a section and subsection structure where the RULE_NUMBER have the format 1-1-1-1-1"""
+    """Receive a question and return the most relevant Rules of the One Piece Card Game based on the inputted query that should be used as part of the context.
+    The result also contains the source information.
+    The data is formatted as following
+    Format: {RULE_ID}. {RULE_TEXT}
+    Rules are segmented in a section and subsection structure where the RULE_ID have the format 1-1-1-1-1, but must be understood as 1.1.1.1.1.
+    Use the RULE_ID to search for the context of those rules using the rule_search tool, example, rule 1.2.3, search for rule 1.2 and 1 to get the context of rule 1.2.3. and give a better answer
+"""
 
     db_qa = Chroma(persist_directory=CHROMA_PATH, embedding_function=embeddings,
                    collection_name="Rules")
-    retsults_qa = db_qa.max_marginal_relevance_search(query, k=10, fetch_k=20)
+    retsults_qa = db_qa.max_marginal_relevance_search(query, k=5, fetch_k=20)
 
-    out_text_qa = "".join([doc.page_content for doc in retsults_qa])
+    out_text_qa = "\n".join([doc.page_content for doc in retsults_qa])
     out_metadata_qa = [doc.metadata.get("source", None) for doc in retsults_qa]
 
     formated_sources = f"Sources: {out_metadata_qa}"

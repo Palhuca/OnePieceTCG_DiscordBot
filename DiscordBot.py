@@ -32,6 +32,8 @@ async def send_message(message: Message, user_message: str, bot_id) -> None:
             response = get_message_agent_with_translation(user_message)
             await message.author.send(response) if is_private else await message.channel.send(response)
         except Exception as e:
+            #print the error stacktrace
+            print(f"{e.__traceback__}")
             print(f"Error: {e}")
     else:
         print("Not for me")

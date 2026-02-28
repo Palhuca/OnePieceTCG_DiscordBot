@@ -13,13 +13,13 @@ def load_documents(path, extension):
 
 
 def load_csv_documents(path):
-    loader = CSVLoader(file_path="./data/CardList/OP_TCG_CARD_LIST.csv", encoding="UTF-8",
+    loader = CSVLoader(file_path="DataScraping/new_card_data/cards_data.csv", encoding="UTF-8",
                        csv_args={
                            "delimiter": ",",
                            "quotechar": '"',
-                           "fieldnames": ["URL", "Effect", "ID", "Title", "Price", "Cost", "Color", "Types",
-                                          "Attributes", "Rarity", "Card Type", "Power", "Source", "SET"]
-                       }, source_column="ID", metadata_columns=["Source", "SET", "Price"]
+                           "fieldnames": ["id","name","card_type","color","cost","life","effect","type","counter","power","attribute","block","collection_name","collection_id","trigger","trigger_effect"
+]
+                       }, source_column="id", metadata_columns=["collection_id"]
                        )
     data = loader.load()
     return data
@@ -28,8 +28,8 @@ def load_csv_documents(path):
 class Db_Loader:
     QA_DATA_PATH = "data/QA"
     CHROMA_PATH = "chroma"
-    RULES_DATA_PATH = "data/Rules"
-    CARD_DATA_PATH = "data/CardList/OP_TCG_CARD_LIST.csv"
+    RULES_DATA_PATH = "data/Rules/new_rule/"
+    CARD_DATA_PATH = "DataScraping/new_card_data/"
 
 
     def start_chroma_db(self):
@@ -65,11 +65,12 @@ class Db_Loader:
         text_splitter = RecursiveCharacterTextSplitter(
             separators=[
                 "\n\n",
-                "\n",
+                "\n"
             ],
             is_separator_regex=False,
-            chunk_size=20,
-            chunk_overlap=0
+            chunk_size=5,
+            chunk_overlap=0,
+            keep_separator=False
         )
 
         documents = load_documents(self.RULES_DATA_PATH, "md")

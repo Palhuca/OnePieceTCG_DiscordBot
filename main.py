@@ -7,6 +7,8 @@ import os
 #load token from env file
 _ = load_dotenv(find_dotenv())
 restChroma = False
+updateCardList = False
+updateQA = False
 
 def initialize_db():
     db = db_initialize.Db_Loader()
