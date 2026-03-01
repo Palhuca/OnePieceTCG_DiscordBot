@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 from langchain_chroma import Chroma
-from langchain.agents import tool
+from langchain.tools import tool
 from langchain_openai import OpenAIEmbeddings
 from pydantic import BaseModel, Field
 from zipp.glob import separate
@@ -31,6 +31,7 @@ def get_from_chroma_qa(query:str) -> str:
     """Receive a question and return the most relevant Q&A and card interaction information based on the inputted query that should be used as context. The result contains the source information. The data is formatted as following
     Format: |{Card_Id}|{Q&A_Question}|{Answer}|"""
 
+    print(f"Query received in get_from_chroma_qa: {query}")
     db_qa = Chroma(persist_directory=CHROMA_PATH, embedding_function=embeddings,
                    collection_name="QeA")
     retsults_qa = db_qa.max_marginal_relevance_search(query, k=3, fetch_k=10)

@@ -1,9 +1,11 @@
-from langchain.agents import tool
+from langchain.tools import tool
 import sqlite3
 from pydantic import BaseModel, Field
 from sympy.parsing.sympy_parser import null
+from langchain_community.agent_toolkits import SQLDatabaseToolkit
+from langchain_community.utilities import SQLDatabase
 
-DATABASE_PATH = '../OPTCG_CardList.db'
+DATABASE_PATH = 'OPTCG_CardList.db'
 
 class CardSearchArgs(BaseModel):
     search_params: str = Field(description='search_params is a string of a dictionary to be use as where clause on the select statement')
@@ -151,3 +153,8 @@ def rules_search(rule_id: str):
 
     rule_text = cursor.execute(base_query, (rule_id,)).fetchone()
     return rule_text
+
+def generic_sql_tool(llm):
+    db = SQLDatabase.from_uri(f"sqlite:///{DATABASE_PATH}")
+    toolkit = SQLDatabaseToolkit(db=db, llm=llm)
+    return toolkit

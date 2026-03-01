@@ -6,7 +6,7 @@ import os
 
 #load token from env file
 _ = load_dotenv(find_dotenv())
-restChroma = False
+restChroma = True
 updateCardList = False
 updateQA = False
 

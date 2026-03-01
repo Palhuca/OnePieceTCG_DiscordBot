@@ -30,6 +30,7 @@ async def send_message(message: Message, user_message: str, bot_id) -> None:
             #response = get_resposes(user_message)
             #response = get_message_agent(user_message)
             response = get_message_agent_with_translation(user_message)
+            #Colocar a chamada do langgraph aqui
             await message.author.send(response) if is_private else await message.channel.send(response)
         except Exception as e:
             #print the error stacktrace
